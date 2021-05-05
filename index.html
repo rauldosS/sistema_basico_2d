@@ -1,0 +1,85 @@
+<!-- Acadêmicos: André Roberto Alves de Oliveira e Raul dos Santos Moraes -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
+
+    <title>Sistema 2D</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <!-- http://drawingincode.com/lessons/concepts/coordinates/index.html -->
+
+        <h2><i class="bi bi-aspect-ratio"></i> Sistema básico 2D</h2>
+
+        <div class="canvas mb-3 d-flex justify-content-center">
+            <canvas id="coordenadas" class="border" height="300" width="900" tabindex="0"></canvas>
+        </div>
+
+        <form>
+            <div class="mb-3">
+                <label class="form-label" for="nome">Nome</label>
+                <input class="form-control" type="text" id="nome" required>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label" for="coordenada_x">Coordenada X</label>
+                <input class="form-control" type="text" id="coordenada_x" required>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label" for="coordenada_y">Coordenada Y</label>
+                <input class="form-control" type="text" id="coordenada_y" required>
+            </div>
+            
+            <div class="mb-3">
+                <label class="form-label" for="tipo_objeto">Tipo de objeto</label>
+                <select id="tipo_objeto" class="form-select">
+                    <option value="ponto" selected>Ponto</option>
+                    <option value="reta">Reta</option>
+                    <option value="quadrado">Quadrado</option>
+                    <option value="polilinha">Polilinhas</option>
+                </select>
+            </div>
+
+            <div class="mb-3 mt-3">
+                <a id="adicionar_objeto" class="btn cursor-pointer btn-success" type="submit"><i class="bi bi-plus-circle-dotted"></i> Adicionar objeto</a>
+            </div>
+        </form>
+
+        <h2>Objetos</h2>
+
+        <ul id="objetos" class="list-group">
+            
+        </ul>
+
+        <h2>Dados</h2>
+
+        <div class="d-flex justify-content-center">
+            <a id="" class="btn cursor-pointer btn-success mr-3" type="submit"><i class="bi bi-cloud-upload"></i> Importar</a>
+            <a id="" class="btn cursor-pointer btn-success" type="submit"><i class="bi bi-cloud-download"></i> Exportar</a>
+        </div>
+
+
+        <hr class="my-5">
+
+        <div class="d-flex justify-content-around">
+            <div><i class="bi bi-vector-pen"></i> André Roberto Alves de </div>
+            <div><i class="bi bi-vector-pen"></i> Raul dos Santos Moraes</div>
+        </div>
+    </div>
+</body>
+
+<script src="script.js"></script>
+
+</html>
