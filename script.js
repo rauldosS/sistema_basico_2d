@@ -2,10 +2,13 @@ document.addEventListener("DOMContentLoaded", function(event) {
     console.log("DOM completamente carregado e analisado")
 
     carregarDados()
+    formatJsonInput()
+    createIcons()
 });
 
 const canvas = document.getElementById('coordenadas')
 const context = canvas.getContext('2d')
+//     context.clearRect(0, 0, canvas.width, canvas.height)
 
 // var canvas=document.getElementById('myCanvas');
 // var context=canvas.getContext('2d');
@@ -13,12 +16,13 @@ const context = canvas.getContext('2d')
 // // set the canvas origin (0,0) to center canvas
 // // All coordinates to the left of center canvas are negative
 // // All coordinates below center canvas are negative
-context.translate(canvas.width/2,canvas.height/2);
+context.translate(canvas.width/2,canvas.height/2)
 
 // context.font = '16px Arial'
 // context.lineWidth = 1;
 // context.textBaseline = 'middle'
 // context.fillStyle = '#000000'
+context.strokeStyle='grey'
 
 // canvas.addEventListener('mouseout', function (e) {
 //     context.clearRect(0, 0, canvas.width, canvas.height)
@@ -67,6 +71,8 @@ for (var x = 0; x <= bh; x += 40) {
   context.stroke()
 }
 
+
+
 document.querySelector('form').addEventListener('submit', (event) => {
     event.preventDefault()
 
@@ -86,6 +92,10 @@ adicionarObjetoCanvas = (dados) => {
     
     if (dados.tipo_objeto == 'quadrado')
         drawQuadradinho(dados.x, dados.y)
+
+    const textarea_dados = document.querySelector('textarea[id="dados"]')
+
+    textarea_dados.value += `${ textarea_dados.value != '' ? '\n' : '' }${ JSON.stringify(dados) }`
 
     localStorage.setItem(dados.nome, JSON.stringify(dados))
 
@@ -127,8 +137,27 @@ carregarDados = () => {
     console.log('Lista de objetos salvos!')
 
     for (const [id, valor] of Object.entries(objetos)) {
-        console.log(JSON.parse(valor))
-
         adicionarObjetoCanvas(JSON.parse(valor))
     }
+}
+
+formatJsonString = (json) => {
+    return JSON.stringify(json, undefined, 4)
+}
+
+formatJsonInput = () => {
+    document.querySelectorAll('.json').forEach(json => {
+        if (json.value) {
+            const str = JSON.stringify(JSON.parse(json.value), undefined, 4)
+            
+            // display pretty printed object in text area:
+            json.value = str
+        }
+    })
+}
+
+createIcons = () => {
+    document.querySelectorAll('#cor option').forEach(el => {
+        el.innerHTML = `<i class="bi bi-palette-fill"></i>${ el.textContent }`
+    })
 }

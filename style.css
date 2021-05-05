@@ -2,6 +2,10 @@
     font-family: 'Roboto', sans-serif;
 }
 
+*, ::after, ::before {
+    box-sizing: border-box;
+}
+
 .container {
     margin: 3%;
 }
@@ -68,9 +72,9 @@
     background-size: 16px 12px;
     border: 1px solid #ced4da;
     border-radius: .25rem;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
+    -webkit-appearance: auto;
+    -moz-appearance: auto;
+    appearance: auto;
 }
 
 .list-group {
@@ -141,4 +145,96 @@ hr.my-5 {
     color: #fff;
     background-color: #dc3545;
     border-color: #dc3545;
+}
+
+.form-control:disabled, .form-control[readonly] {
+    background-color: #e9ecef;
+    opacity: 1;
+}
+
+button, input, optgroup, select, textarea {
+    margin: 0;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+}
+
+.row {
+    --bs-gutter-x: 1.5rem;
+    --bs-gutter-y: 0;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: calc(var(--bs-gutter-y) * -1);
+    margin-right: calc(var(--bs-gutter-x)/ -2);
+    margin-left: calc(var(--bs-gutter-x)/ -2);
+}
+
+.row>* {
+    flex-shrink: 0;
+    width: 100%;
+    max-width: 100%;
+    padding-right: calc(var(--bs-gutter-x)/ 2);
+    padding-left: calc(var(--bs-gutter-x)/ 2);
+    margin-top: var(--bs-gutter-y);
+}
+
+.col {
+    flex: 1 0 0%;
+}
+
+.col-12 {
+    flex: 0 0 auto;
+    width: 100%;
+}
+
+@media (min-width: 768px) {
+    .col-md-3 {
+        flex: 0 0 auto;
+        width: 25%;
+    }
+
+    .col-md-4 {
+        flex: 0 0 auto;
+        width: 33.3333333333%;
+    }
+
+    .col-md-6 {
+        flex: 0 0 auto;
+        width: 50%;
+    }
+}
+
+.g-3, .gy-3 {
+    --bs-gutter-y: 1rem;
+}
+.g-3, .gx-3 {
+    --bs-gutter-x: 1rem;
+}
+
+#plano_cartesiano {
+    position: relative;
+    width: 100%;
+    height: 300px;
+    border: 1px solid #ccc;
+}
+
+#plano_cartesiano:before {
+    content:"";
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    border-left: solid 1px #ff0000;
+    transform: translate(-50%);
+}
+
+.plano_cartesiano:after {
+    content: '';
+    width: 100%;
+    border-bottom: solid 1px #ff0000;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    z-index: 1;
 }
