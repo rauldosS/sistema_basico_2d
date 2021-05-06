@@ -147,6 +147,14 @@ hr.my-5 {
     border-color: #dc3545;
 }
 
+.text-danger {
+    color: #dc3545!important;
+}
+
+.text-end {
+    text-align: right!important;
+}
+
 .form-control:disabled, .form-control[readonly] {
     background-color: #e9ecef;
     opacity: 1;
@@ -219,6 +227,10 @@ button, input, optgroup, select, textarea {
     /* background-image: url(https://guiadoensino.com.br/wp-content/uploads/2019/01/Imagem-principal-Pixabay-18_01_19-Plano-Cartesiano-Matem%C3%A1tica-.png);
     background-position: center;
     background-repeat: no-repeat; */
+}
+
+#graph:hover {
+    cursor: crosshair;
 }
 
 #graph:before {
