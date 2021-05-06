@@ -1,6 +1,4 @@
-# sistema_basico_2d
-
-Implementação de um sistema básico 2D
+# Implementação de um sistema básico 2D
 
 A tarefa está disponível aqui: [link para a tarefa!](https://rauldoss.github.io/sistema_basico_2d/)
 
