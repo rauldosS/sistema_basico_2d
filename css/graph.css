@@ -1,0 +1,23 @@
+#graph {
+    margin: 0 auto;
+}
+
+.axis path, .axis line {
+    fill: none;
+    stroke: black;
+    shape-rendering: crispEdges;
+}
+
+.axis text {
+    font-family: sans-serif;
+    font-size: 11px;
+}
+
+.tick line {
+    stroke: #59ADEB;
+    opacity: 0.5;
+}
+
+g path.domain {
+    stroke: #4F4F4F;
+}

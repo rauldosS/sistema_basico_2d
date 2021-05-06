@@ -1,11 +1,9 @@
 function saveTextAsFile(event) {
     event.preventDefault()
 
-    console.log(event.target.getAttribute('type'))
-
     const textToWrite = document.querySelector(`textarea[id=${ event.target.getAttribute('for') }]`).value
     const textFileAsBlob = new Blob([textToWrite], { type: 'text/plain' })
-    const fileNameToSaveAs = `ecc.${ event.target.getAttribute('type') }`
+    const fileNameToSaveAs = `dados.${ event.target.getAttribute('type') }`
 
     const downloadLink = document.createElement("a")
 
@@ -28,6 +26,6 @@ function saveTextAsFile(event) {
     downloadLink.click()
 }
 
-const button = document.getElementById('exportar')
+const button = document.getElementById('export')
 
 button.addEventListener('click', saveTextAsFile)

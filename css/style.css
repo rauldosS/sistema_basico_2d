@@ -211,14 +211,17 @@ button, input, optgroup, select, textarea {
     --bs-gutter-x: 1rem;
 }
 
-#plano_cartesiano {
+#graph {
     position: relative;
     width: 100%;
-    height: 300px;
+    height: 400px;
     border: 1px solid #ccc;
+    /* background-image: url(https://guiadoensino.com.br/wp-content/uploads/2019/01/Imagem-principal-Pixabay-18_01_19-Plano-Cartesiano-Matem%C3%A1tica-.png);
+    background-position: center;
+    background-repeat: no-repeat; */
 }
 
-#plano_cartesiano:before {
+#graph:before {
     content:"";
     position: absolute;
     z-index: -1;
@@ -229,12 +232,21 @@ button, input, optgroup, select, textarea {
     transform: translate(-50%);
 }
 
-.plano_cartesiano:after {
+#graph:after {
     content: '';
     width: 100%;
     border-bottom: solid 1px #ff0000;
     position: absolute;
     left: 0;
     top: 50%;
+    z-index: 1;
+}
+
+#graph .object:after {
+    content: attr(coordinate);
+    width: 100px;
+    position: absolute;
+    left: 10px;
+    top: 10px;
     z-index: 1;
 }

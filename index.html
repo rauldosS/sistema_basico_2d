@@ -13,7 +13,11 @@
 
     <title>Sistema 2D</title>
 
-    <link rel="stylesheet" href="style.css">
+    <script src="https://d3js.org/d3.v3.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/graph.css">
 </head>
 
 <body>
@@ -22,7 +26,7 @@
 
         <h2><i class="bi bi-aspect-ratio"></i> Sistema básico 2D</h2>
 
-        <div id="plano_cartesiano" class="plano_cartesiano"></div>
+        <div id="graph" class="d-flex justify-content-center"></div>
 
         <!-- <div id="plano_cartesiano">Click Me -<br> (this box has margin-left: 100px; margin-top: 20px;)</div> -->
 
@@ -30,42 +34,59 @@
             <canvas id="coordenadas" class="border" onclick="showCoords(event)" height="300" width="900" tabindex="0"></canvas>
         </div> -->
 
-        <p id='showCoords'></p>
+        <div class="d-flex justify-content-center">
+            <p id='showCoords'></p>
+        </div>
 
         <form class="g-3 row">
-            <div class="col-md-4">
-                <label class="form-label" for="nome">Nome</label>
-                <input class="form-control" type="text" id="nome" required>
-            </div>
-
-            <div class="col-md-4">
-                <label class="form-label" for="coordenada_x">Coordenada X</label>
-                <input class="form-control" type="text" id="coordenada_x" required>
-            </div>
-
-            <div class="col-md-4">
-                <label class="form-label" for="coordenada_y">Coordenada Y</label>
-                <input class="form-control" type="text" id="coordenada_y" required>
+            <div class="col-md-6">
+                <label class="form-label" for="type">Tipo de objeto</label>
+                <select id="type" class="form-select">
+                    <option value="pointer" selected>Ponto</option>
+                    <option value="rectangle">Retângulo/Quadrado</option>
+                    <!-- <option value="straight">Reta</option>
+                    <option value="polyline">Polilinhas</option> -->
+                </select>
             </div>
             
             <div class="col-md-6">
-                <label class="form-label" for="cor">Cor</label>
-                <select id="cor" class="form-select">
-                    <option value="#0000ff" selected>Preto</option>
+                <label class="form-label" for="color">Cor</label>
+                <select id="color" class="form-select">
+                    <option value="#0000ff" selected>Azul</option>
                     <option value="#000000">Preto</option>
                     <option value="#ff0000">Vermelho</option>
                     <option value="#ffffff">Branco</option>
                 </select>
             </div>
 
-            <div class="col-md-6">
-                <label class="form-label" for="tipo_objeto">Tipo de objeto</label>
-                <select id="tipo_objeto" class="form-select">
-                    <option value="ponto" selected>Ponto</option>
-                    <option value="reta">Reta</option>
-                    <option value="quadrado">Quadrado</option>
-                    <option value="polilinha">Polilinhas</option>
-                </select>
+            <div class="col-md-4">
+                <label class="form-label" for="name">Nome</label>
+                <input class="form-control" type="text" id="name" required>
+            </div>
+
+            <div class="col-md-4">
+                <label class="form-label" for="x">Coordenada X (Máximo 580)</label>
+                <input class="form-control" type="text" id="x" value='0' required>
+            </div>
+
+            <div class="col-md-4">
+                <label class="form-label" for="y">Coordenada Y (Máximo 200)</label>
+                <input class="form-control" type="text" id="y" value='0' required>
+            </div>
+
+            <div class="col-md-4">
+                <label class="form-label" for="width">Largura</label>
+                <input class="form-control" type="text" id="width" value='10' required>
+            </div>
+
+            <div class="col-md-4">
+                <label class="form-label" for="height">Altura</label>
+                <input class="form-control" type="text" id="height" value='10' required>
+            </div>
+
+            <div class="col-md-4">
+                <label class="form-label" for="border">Espessura da linha/borda</label>
+                <input class="form-control" type="text" id="border" value='1' required>
             </div>
 
             <div class="mt-4">
@@ -75,20 +96,20 @@
 
         <h2>Objetos</h2>
 
-        <ul id="objetos" class="list-group">
+        <ul id="objects" class="list-group">
             
         </ul>
 
         <h2>Dados</h2>
 
         <div class="mb-3">
-            <label for="dados" class="form-label">Dados salvos</label>
-            <textarea class="form-control json" id="dados" rows="10" disabled></textarea>
+            <label for="json_data" class="form-label">Dados salvos</label>
+            <textarea class="form-control json" id="json_data" rows="10" disabled></textarea>
         </div>
 
         <div class="d-flex justify-content-center">
             <a id="importar" class="btn cursor-pointer btn-success mr-3"><i class="bi bi-cloud-upload"></i> Importar</a>
-            <a id="exportar" class="btn cursor-pointer btn-success" for="dados" type="txt"><i class="bi bi-cloud-download"></i> Exportar</a>
+            <a id="export" class="btn cursor-pointer btn-success" for="json_data" type="txt"><i class="bi bi-cloud-download"></i> Exportar</a>
         </div>
 
         <hr class="my-5">
@@ -100,8 +121,8 @@
     </div>
 </body>
 
-<script src="script.js"></script>
-<script src="plano_cartesiano.js"></script>
-<script src="saveFile.js"></script>
+<!-- <script src="js/graph.js"></script> -->
+<script src="js/objects.js"></script>
+<script src="js/saveFile.js"></script>
 
 </html>
