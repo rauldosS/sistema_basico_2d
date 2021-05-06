@@ -2,6 +2,8 @@
 
 Implementação de um sistema básico 2D
 
+A tarefa está disponível aqui: [link para a tarefa!](https://rauldoss.github.io/sistema_basico_2d/)
+
 - Interface Gráfica (GUI) básica com a janela de visualização (viewport), display list, botões para movimentação da window (ainda sem implementação)
 - Display list 2D que armazene os objetos do sistema
   - Deverá ser possível remover os elementos individuais da display list
@@ -13,3 +15,7 @@ Implementação de um sistema básico 2D
   - Deve ser possível inserir os objetos em coordenadas cartesianas positivas e negativas
 - Nesta parte ainda não há a necessidade de implementar a transformada de viewport
   - A viewport deve refletir automaticamente o estado da display list, ou seja, ao se adicionar, alterar ou remover um elemento do display file, o viewport deve ser automaticamente atualizado
+
+![alt text](https://github.com/rauldosS/sistema_basico_2d/blob/main/images/1.png?raw=true)
+
+![alt text](https://github.com/rauldosS/sistema_basico_2d/blob/main/images/2.png?raw=true)
