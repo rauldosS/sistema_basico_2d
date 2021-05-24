@@ -31,7 +31,62 @@
 
         <div id="graph" class="d-flex justify-content-center"></div>
 
-        <p class="text-end"><b class="text-danger">Clique sobre o plano copiar as coordenadas para os seus respectivos campos no formulário</b></p>
+        <div id="operations">
+            <div class="d-flex justify-content-around">
+                <h2>Operações em objeto</h2>
+                <p class="text-end"><b class="text-danger">Selecione um objeto no plano para aplicar alterações.</b></p>
+            </div>
+
+            <div class="g-3 row">
+                <div class="col-md-4">
+                    <h3>Translação</h3>
+
+                    <div class="m-1">
+                        <label class="form-label" for="dy">Dy</label>
+                        <input class="form-control" type="number" id="dy" value='0'>
+                    </div>
+
+                    <div class="m-1">
+                        <label class="form-label" for="dx">Dx</label>
+                        <input class="form-control" type="number" id="dx" value='0'>
+                    </div>
+
+                    <a onclick="translation()" class="btn cursor-pointer btn-success"><i class="bi bi-plus-circle-dotted"></i> Aplicar alterações ao objeto</a>
+                </div>
+
+                <div class="col-md-4">
+                    <h3>Rotação</h3>
+
+                    <div class="m-1">
+                        <label class="form-label" for="origin">Rotacionar</label>
+                        <input class="form-control" type="text" id="origin" value='Rotacionar sobre a Origem' disabled>
+                    </div>
+
+                    <div class="m-1">
+                        <label class="form-label" for="angle">Ângulo de rotação</label>
+                        <input class="form-control" type="number" id="angle" value='0'>
+                    </div>
+
+                    <a onclick="rotation()" class="btn cursor-pointer btn-success"><i class="bi bi-plus-circle-dotted"></i> Aplicar alterações ao objeto</a>
+                </div>
+
+                <div class="col-md-4">
+                    <h3>Escalonamento</h3>
+
+                    <div class="m-1">
+                        <label class="form-label" for="sx">Sx</label>
+                        <input class="form-control" type="number" id="sx" value='0' disabled>
+                    </div>
+
+                    <div class="m-1">
+                        <label class="form-label" for="sy">Sy</label>
+                        <input class="form-control" type="number" id="sy" value='0' disabled>
+                    </div>
+
+                    <a class="btn cursor-pointer btn-success"><i class="bi bi-plus-circle-dotted"></i> Aplicar alterações ao objeto</a>
+                </div>
+            </div>
+        </div>
 
         <!-- <div id="plano_cartesiano">Click Me -<br> (this box has margin-left: 100px; margin-top: 20px;)</div> -->
 
@@ -43,61 +98,68 @@
             <p id='showCoords'></p>
         </div>
 
-        <form class="g-3 row">
-            <div class="col-md-6">
-                <label class="form-label" for="type">Tipo de objeto</label>
-                <select id="type" class="form-select">
-                    <option value="pointer" selected>Ponto</option>
-                    <option value="rectangle">Retângulo/Quadrado</option>
-                    <!-- <option value="straight">Reta</option>
-                    <option value="polyline">Polilinhas</option> -->
-                </select>
-            </div>
-            
-            <div class="col-md-6">
-                <label class="form-label" for="color">Cor</label>
-                <select id="color" class="form-select">
-                    <option value="#0000ff" selected>Azul</option>
-                    <option value="#000000">Preto</option>
-                    <option value="#ff0000">Vermelho</option>
-                    <option value="#ffffff">Branco</option>
-                </select>
+        <div id="add-object">
+            <div class="d-flex justify-content-around">
+                <h2>Adicionar objeto</h2>
+                <p class="text-end"><b class="text-danger">Clique sobre o plano copiar as coordenadas para os seus respectivos campos no formulário</b></p>
             </div>
 
-            <div class="col-md-4">
-                <label class="form-label" for="name">Nome</label>
-                <input class="form-control" type="text" id="name" required>
-            </div>
+            <form class="g-3 row">
+                <div class="col-md-6">
+                    <label class="form-label" for="type">Tipo de objeto</label>
+                    <select id="type" class="form-select">
+                        <option value="pointer" selected>Ponto</option>
+                        <option value="rectangle">Retângulo/Quadrado</option>
+                        <!-- <option value="straight">Reta</option>
+                        <option value="polyline">Polilinhas</option> -->
+                    </select>
+                </div>
+                
+                <div class="col-md-6">
+                    <label class="form-label" for="color">Cor</label>
+                    <select id="color" class="form-select">
+                        <option value="#0000ff" selected>Azul</option>
+                        <option value="#000000">Preto</option>
+                        <option value="#ff0000">Vermelho</option>
+                        <option value="#ffffff">Branco</option>
+                    </select>
+                </div>
 
-            <div class="col-md-4">
-                <label class="form-label" for="x">Coordenada X (Máximo 580)</label>
-                <input class="form-control" type="text" id="x" value='0' required>
-            </div>
+                <div class="col-md-4">
+                    <label class="form-label" for="name">Nome</label>
+                    <input class="form-control" type="text" id="name" required>
+                </div>
 
-            <div class="col-md-4">
-                <label class="form-label" for="y">Coordenada Y (Máximo 200)</label>
-                <input class="form-control" type="text" id="y" value='0' required>
-            </div>
+                <div class="col-md-4">
+                    <label class="form-label" for="x">Coordenada X (Máximo 580)</label>
+                    <input class="form-control" type="text" id="x" value='0' required>
+                </div>
 
-            <div class="col-md-4">
-                <label class="form-label" for="width">Largura</label>
-                <input class="form-control" type="text" id="width" value='10' required>
-            </div>
+                <div class="col-md-4">
+                    <label class="form-label" for="y">Coordenada Y (Máximo 200)</label>
+                    <input class="form-control" type="text" id="y" value='0' required>
+                </div>
 
-            <div class="col-md-4">
-                <label class="form-label" for="height">Altura</label>
-                <input class="form-control" type="text" id="height" value='10' required>
-            </div>
+                <div class="col-md-4">
+                    <label class="form-label" for="width">Largura</label>
+                    <input class="form-control" type="text" id="width" value='10' required>
+                </div>
 
-            <div class="col-md-4">
-                <label class="form-label" for="border">Espessura da linha/borda</label>
-                <input class="form-control" type="text" id="border" value='1' required>
-            </div>
+                <div class="col-md-4">
+                    <label class="form-label" for="height">Altura</label>
+                    <input class="form-control" type="text" id="height" value='10' required>
+                </div>
 
-            <div class="mt-4">
-                <button class="btn cursor-pointer btn-success" type="submit"><i class="bi bi-plus-circle-dotted"></i> Adicionar objeto</button>
-            </div>
-        </form>
+                <div class="col-md-4">
+                    <label class="form-label" for="border">Espessura da linha/borda</label>
+                    <input class="form-control" type="text" id="border" value='1' required>
+                </div>
+
+                <div class="mt-4">
+                    <button class="btn cursor-pointer btn-success" type="submit"><i class="bi bi-plus-circle-dotted"></i> Adicionar objeto</button>
+                </div>
+            </form>
+        </div>
 
         <h2>Objetos</h2>
 

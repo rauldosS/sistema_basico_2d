@@ -80,7 +80,18 @@ addGraphicObject = (data) => {
     localStorage.setItem(data.id, JSON.stringify(data))
 
     addListObjects(data)
+    addEventObject(data)
     // formatJsonInput()
+}
+
+addEventObject = (data) => {
+    document.getElementById(data.id).addEventListener('click', (event) => {
+        document.querySelectorAll('.object.selected').forEach(object => {
+            object.classList.remove('selected')
+        })
+
+        event.target.classList.add('selected')
+    })
 }
 
 // Type objects
@@ -118,7 +129,6 @@ addListObjects = (data) => {
         <li id="${ data.id }" class="list-group-item d-flex bd-highlight">
             <div class="me-auto p-2 bd-highlight">${ data.name } (${ data.x }, ${ data.y })</div>
             <a onclick="deleteObject(this, '${ data.id }')" class="p-2 bd-highlight btn btn-danger mr-3 cursor-pointer"><i class="bi bi-trash"></i> Remover</a>
-            <a class="p-2 bd-highlight btn btn-success cursor-pointer"><i class="bi bi-arrow-clockwise"></i> Rotacionar 90º</a>
         </li>
     `
 }
@@ -155,4 +165,28 @@ formatJsonInput = () => {
             json.value = str
         }
     })
+}
+
+translation = () => {
+    const selected = document.querySelector('.object.selected')
+
+    if (selected) {
+        const dx = document.getElementById('dx').value
+        const dy = document.getElementById('dy').value
+    
+        selected.style.left = `${ parseInt(selected.offsetLeft) + parseInt(dx) }px`;
+        selected.style.top = `${ parseInt(selected.offsetTop) + parseInt(dy) }px`;
+    } else
+        alert('Selecione um objecto para alterar suas propriedades.')
+}
+
+rotation = () => {
+    const selected = document.querySelector('.object.selected')
+
+    if (selected) {
+        const angle = document.getElementById('angle').value
+
+        selected.style.transform = `${ selected.style.transform } rotate(${ angle }deg)`
+    } else
+        alert('Selecione um objecto para alterar suas propriedades.')
 }

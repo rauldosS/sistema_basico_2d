@@ -256,9 +256,25 @@ button, input, optgroup, select, textarea {
 
 #graph .object:after {
     content: attr(coordinate);
-    width: 100px;
+    width: max-content;
     position: absolute;
     left: 10px;
     top: 10px;
     z-index: 1;
+    background-color: #00000078;
+    border-radius: 22px;
+    padding: 3px 10px;
+    color: #fff;
+    border: 1px solid;
+}
+
+.m-1 {
+    margin: 3% 0;
+}
+
+#operations, #add-object {
+    border: 1px solid #ccc;
+    padding: 0 1% 2% 1%;
+    border-radius: 10px;
+    margin-top: 1%;
 }
