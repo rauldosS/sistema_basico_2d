@@ -2,6 +2,11 @@
     margin: 0 auto;
 }
 
+#graph-container {
+    height: 440px !important;
+    width: 100%;
+}
+
 .axis path, .axis line {
     fill: none;
     stroke: black;

@@ -152,10 +152,6 @@ loadData = () => {
     }
 }
 
-// formatJsonString = (json) => {
-//     return JSON.stringify(json, undefined, 4)
-// }
-
 formatJsonInput = () => {
     document.querySelectorAll('.json').forEach(json => {
         if (json.value) {
@@ -187,6 +183,22 @@ rotation = () => {
         const angle = document.getElementById('angle').value
 
         selected.style.transform = `${ selected.style.transform } rotate(${ angle }deg)`
+    } else
+        alert('Selecione um objecto para alterar suas propriedades.')
+}
+
+scaling = () => {
+    const selected = document.querySelector('.object.selected')
+
+    if (selected) {
+        const sx = document.getElementById('sx').value
+        const sy = document.getElementById('sy').value
+
+        selected.style.left = `${ parseInt(selected.offsetLeft) + parseInt(sx) }px`;
+        selected.style.top = `${ parseInt(selected.offsetTop) + parseInt(sy) }px`;
+
+        selected.style.width = `${ parseInt(selected.offsetWidth) + parseInt(sx) }px`;
+        selected.style.height = `${ parseInt(selected.offsetHeight) + parseInt(sy) }px`;
     } else
         alert('Selecione um objecto para alterar suas propriedades.')
 }
